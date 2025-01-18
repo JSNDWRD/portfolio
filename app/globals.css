@@ -1,3 +1,34 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  @apply max-xl:text-sm;
+}
+
+.bentoBox {
+  background-image: linear-gradient(
+    to right top,
+    #4d4dc6,
+    #4848cd,
+    #4243d4,
+    #3c3ddb,
+    #3636e2
+  );
+  @apply p-6 rounded-xl w-full;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-scroll {
+  display: flex;
+  animation: scroll 30s linear infinite;
+  width: calc(2 * 100%);
+}

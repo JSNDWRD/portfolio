@@ -9,10 +9,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        dark: "#28304D",
+        dark: "#0F0F0F",
         light: "#FFFFFF",
-        primary: "#1D1D3B",
+        primary: "#141414",
         secondary: "#6D6DB8",
+      },
+      fontSize: {
+        heading: "2rem",
       },
     },
   },
