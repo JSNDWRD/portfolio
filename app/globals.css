@@ -7,15 +7,7 @@
 }
 
 .bentoBox {
-  background-image: linear-gradient(
-    to right top,
-    #4d4dc6,
-    #4848cd,
-    #4243d4,
-    #3c3ddb,
-    #3636e2
-  );
-  @apply p-6 rounded-xl w-full;
+  @apply p-6 rounded-xl w-full bg-light drop-shadow-md;
 }
 
 @keyframes scroll {
