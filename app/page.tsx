@@ -133,7 +133,7 @@ export default function Home() {
           <div className="bentoBox  row-span-1 flex items-center gap-4">
             <div className="flex-1">
               <h2 className="lg:text-base xl:text-lg font-medium">
-                Let's talk!
+                Let&apos;s talk!
               </h2>
             </div>
             {socials.map((social, i) => (
