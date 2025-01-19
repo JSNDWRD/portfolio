@@ -95,7 +95,7 @@ export default function Home() {
               <li>
                 <Link
                   href={
-                    "https://www.freecodecamp.org/certification/jsndwrd/responsive-web-design"
+                    "https://www.freecodecamp.org/certification/jsndwrd/javascript-algorithms-and-data-structures-v8"
                   }
                   target="_blank"
                   className="flex items-center gap-2 group hover:underline transition-transform"
