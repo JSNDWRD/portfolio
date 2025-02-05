@@ -4,7 +4,7 @@ import * as motion from "motion/react-client";
 
 function Jumbotron() {
   return (
-    <div className="mx-auto flex h-[100dvh] items-center gap-8 max-md:h-auto max-md:flex-col max-md:pt-4">
+    <div className="mx-auto flex min-h-[100dvh] items-center gap-8 max-md:h-auto max-md:flex-col max-md:justify-center max-md:pt-4">
       <motion.div
         className="px-4 md:h-[150dvh] md:w-1/3 md:py-24"
         initial={{ y: -80, opacity: 0 }}
