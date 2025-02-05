@@ -9,8 +9,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        dark: "#00010f",
+        light: "#ffffff",
+        secondary: "rgb(37,99,235)",
+        accent: "#080a1b",
+      },
+      backgroundImage: {
+        card: "url('../public/card.png')",
       },
     },
   },
