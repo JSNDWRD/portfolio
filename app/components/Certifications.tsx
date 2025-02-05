@@ -4,7 +4,6 @@ import { certifications, stack } from "../utils/data";
 export default function Certifications() {
   return (
     <motion.div
-      className="min-h-[100dvh]"
       initial={{ y: -100, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
       transition={{ ease: "easeInOut", duration: 1 }}

@@ -1,4 +1,5 @@
 import Certifications from "./components/Certifications";
+import Contact from "./components/Contact";
 import Jumbotron from "./components/Jumbotron";
 import Projects from "./components/Projects";
 
@@ -8,6 +9,7 @@ export default function Home() {
       <Jumbotron />
       <Projects />
       <Certifications />
+      <Contact />
     </div>
   );
 }

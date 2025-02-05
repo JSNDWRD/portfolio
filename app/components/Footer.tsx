@@ -7,7 +7,7 @@ import * as motion from "motion/react-client";
 export default function Footer() {
   return (
     <motion.footer
-      className="relative"
+      className="relative mt-36"
       initial={{ y: 100, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
       transition={{ ease: "easeInOut", duration: 1 }}
