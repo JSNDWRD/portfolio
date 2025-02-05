@@ -27,9 +27,9 @@ function Jumbotron() {
         <h1>Jason Edward Salim</h1>
         <p className="text-light/70 max-md:text-center max-md:text-sm">
           a freshman majoring in computer science at Bandung Institute of
-          Technology. I'm currently interested in full-stack development, where
-          I create both frontend and backend of web applications using various
-          tech-stack. In addition to my studies, I am passionate about
+          Technology. I&apos;m currently interested in full-stack development,
+          where I create both frontend and backend of web applications using
+          various tech-stack. In addition to my studies, I am passionate about
           problem-solving and coding, which help me sharpen my programming
           skills. I also love collaborating with peers on projects, as I believe
           teamwork fosters creativity and innovation. Outside of academics, I
