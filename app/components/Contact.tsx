@@ -54,7 +54,7 @@ export default function Contact() {
       transition={{ ease: "easeInOut", duration: 1 }}
     >
       <div className="mx-auto max-w-screen-md px-4 py-8 lg:py-16">
-        <h2 className="mb-4 text-center text-4xl tracking-tight">Contact Us</h2>
+        <h2 className="mb-4 text-center text-4xl tracking-tight">Contact Me</h2>
         <p className="mb-8 text-center font-light sm:text-xl lg:mb-16 dark:text-gray-400">
           Get in touch with me in case you want to do something.
         </p>
