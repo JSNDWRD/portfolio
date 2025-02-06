@@ -23,7 +23,7 @@ function Jumbotron() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ ease: "easeInOut", duration: 1 }}
       >
-        <p>Hello world, I am</p>
+        <p className="max-md:text-center">Hello world, I am</p>
         <h1>Jason Edward Salim</h1>
         <p className="text-light/70 max-md:text-center max-md:text-sm">
           a freshman majoring in computer science at Bandung Institute of

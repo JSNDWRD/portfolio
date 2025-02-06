@@ -10,10 +10,10 @@ export default function Footer() {
       <Image
         src={footer}
         alt="footer"
-        className="h-72 object-cover object-top"
+        className="h-72 object-cover object-top max-md:blur-sm"
       />
       <motion.div
-        className="absolute top-0 z-20 flex h-full w-full gap-6 p-6 text-xl max-md:backdrop-blur md:gap-24"
+        className="absolute top-0 z-20 flex h-full w-full gap-6 p-6 text-xl md:gap-24"
         initial={{ y: -100, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ ease: "easeInOut", duration: 1 }}

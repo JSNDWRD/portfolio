@@ -5,7 +5,7 @@ import Projects from "./components/Projects";
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-32">
+    <div className="flex flex-col gap-32 max-lg:pt-20">
       <Jumbotron />
       <Projects />
       <Certifications />
