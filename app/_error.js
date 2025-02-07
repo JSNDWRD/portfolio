@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 function Error({ statusCode }) {
   return (
     <div className="flex h-[100dvh] justify-center">
