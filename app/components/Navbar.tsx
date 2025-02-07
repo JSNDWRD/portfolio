@@ -64,11 +64,14 @@ export default function Navbar() {
           )}
         </button>
         <div
-          className={`fixed left-0 top-14 w-full bg-accent ${open ? "opacity-100" : "opacity-0"} p-6 transition-all lg:hidden`}
+          className={`fixed left-0 top-14 h-[100dvh] w-full bg-accent ${open ? "opacity-100" : "opacity-0"} p-6 transition-all lg:hidden`}
         >
           <ul className="flex flex-col gap-2 *:px-4 *:py-2">
             {links.map((link, i) => (
               <li
+                onClick={() => {
+                  setOpen(false);
+                }}
                 key={i}
                 className={`${path === link.href ? "rounded-full bg-secondary/20" : ""}`}
               >
@@ -76,6 +79,9 @@ export default function Navbar() {
               </li>
             ))}
             <li
+              onClick={() => {
+                setOpen(false);
+              }}
               className={`${path === "/contact" ? "rounded-full bg-secondary/20" : ""} px-4 py-2`}
             >
               <Link href={"/contact"}>Contact</Link>

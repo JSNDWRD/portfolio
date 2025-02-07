@@ -3,13 +3,14 @@ import Image from "next/image";
 import * as motion from "motion/react-client";
 
 function Jumbotron() {
+  const transition = { ease: "easeInOut", duration: 0.8, delay: 0.5 };
   return (
-    <div className="mx-auto flex items-center gap-8 max-md:h-auto max-md:flex-col max-md:justify-center max-md:pt-4 md:h-[100dvh]">
+    <div className="mx-auto flex h-[100dvh] items-center gap-8 max-md:min-h-[100dvh] max-md:flex-col max-md:justify-center max-md:pt-4">
       <motion.div
         className="px-4 md:h-[150dvh] md:w-1/3 md:py-24"
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ ease: "easeInOut", duration: 0.8 }}
+        transition={transition}
       >
         <Image
           src={profile}
@@ -18,7 +19,7 @@ function Jumbotron() {
         />
       </motion.div>
       <motion.div
-        className="flex h-full flex-1 flex-col justify-center gap-2 pe-6 text-lg font-medium max-md:w-full max-md:px-6"
+        className="flex h-full flex-1 flex-col justify-center gap-2 pe-6 text-lg font-medium max-md:w-full max-md:justify-start max-md:px-6"
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ ease: "easeInOut", duration: 1 }}
