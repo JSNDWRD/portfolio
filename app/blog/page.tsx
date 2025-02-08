@@ -7,7 +7,7 @@ export default function page() {
       <Image
         src={background}
         alt="background"
-        className="object-cover object-center"
+        className="h-[100dvh] max-h-[100dvh] object-cover object-center"
       />
       <h1 className="absolute top-1/2 -translate-y-1/2 self-center">
         Developing...
