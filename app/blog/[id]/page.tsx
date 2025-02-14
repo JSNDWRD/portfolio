@@ -9,7 +9,7 @@ interface Blog {
   content: string;
 }
 
-export default function page({ params }: { params: { id: string } }) {
+export default function Page({ params }: { params: Promise<{ id: string }> }) {
   const [post, setPost] = useState<Blog>({
     id: 0,
     createdAt: "",

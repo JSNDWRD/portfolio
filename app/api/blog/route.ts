@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/app/utils/prisma";
 
 // GET Blog Data
-export async function GET(req: NextRequest) {
+export async function GET() {
   const blogData = await prisma.post.findMany({});
   return NextResponse.json(blogData);
 }
@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
 }
 
 // Delete Blog Data
-export async function DELETE(req: NextRequest) {
+export async function DELETE() {
   const deletePosts = await prisma.post.deleteMany({});
   return NextResponse.json(deletePosts);
 }

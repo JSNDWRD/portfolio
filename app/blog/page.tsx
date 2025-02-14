@@ -10,7 +10,7 @@ interface Blog {
   content: string;
 }
 
-export default function page() {
+export default function Page() {
   const [blog, setBlog] = useState<Blog[]>([]);
   useEffect(() => {
     const fetchBlog = async () => {
