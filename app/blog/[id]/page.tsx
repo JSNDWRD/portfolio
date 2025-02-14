@@ -1,3 +1,6 @@
+"use client";
+import { useEffect, useState } from "react";
+
 interface Blog {
   id: number;
   createdAt: string;
@@ -6,16 +9,26 @@ interface Blog {
   content: string;
 }
 
-export default async function page({ params }: { params: { id: string } }) {
-  const { id } = await params;
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BLOG_URL}/${id}`);
-  const data: Blog = await res.json();
+export default function page({ params }: { params: { id: string } }) {
+  const [post, setPost] = useState<Blog>({
+    id: 0,
+    createdAt: "",
+    updatedAt: "",
+    title: "",
+    content: "",
+  });
+  useEffect(() => {
+    const fetchPost = async () => {
+      const { id } = await params;
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BLOG_URL}/${id}`);
+      const data: Blog = await res.json();
+      setPost(data);
+    };
+    fetchPost();
+  }, []);
+
   try {
-    return (
-      <div className="min-h-[100dvh]">
-        <h1>{data.content}</h1>
-      </div>
-    );
+    return <div className="min-h-[100dvh]">{post.title}</div>;
   } catch {
     return (
       <div className="flex min-h-[100dvh] items-center justify-center gap-4 max-md:flex-col">
