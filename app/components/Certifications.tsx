@@ -23,7 +23,7 @@ export default function Certifications() {
               <Link
                 href={link.href}
                 target="_blank"
-                className="group flex w-fit items-center gap-2 text-xl font-medium hover:underline"
+                className="group flex w-fit items-center gap-2 text-xl font-medium group-hover:underline"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
