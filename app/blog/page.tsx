@@ -8,7 +8,7 @@ interface Blog {
   createdAt: string;
   updatedAt: string;
   title: string;
-  content: string;
+  content: object[];
 }
 
 export default function Page() {

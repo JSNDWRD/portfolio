@@ -1,13 +1,19 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+
+interface Content {
+  type: string;
+  data: string;
+}
 
 interface Relation {
   id: number;
   createdAt: string;
   updatedAt: string;
   title: string;
-  content: string;
+  content: Content[];
 }
 
 interface Blog {
@@ -15,7 +21,7 @@ interface Blog {
   createdAt: string;
   updatedAt: string;
   title: string;
-  content: string;
+  content: Content[];
   email: string;
   name: string;
   posts: Relation[];
@@ -28,20 +34,24 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
     createdAt: "",
     updatedAt: "",
     title: "",
-    content: "",
+    content: [],
     email: "",
     name: "",
     posts: [],
   });
-  const [content, setContent] = useState<string[]>([]);
   useEffect(() => {
     const fetchPost = async () => {
       const { id } = await params;
       const res = await fetch(`${process.env.NEXT_PUBLIC_BLOG_URL}/${id}`);
       const data: Blog = await res.json();
+      if (typeof data.content === "string") {
+        try {
+          data.content = JSON.parse(data.content); // Parse string into an array
+        } catch (error) {
+          console.error("Failed to parse content:", error);
+        }
+      }
       setPost(data);
-      const text = data.content.toString().split(String.raw`\n`);
-      setContent(text);
       setLoading(false);
     };
     fetchPost();
@@ -57,10 +67,34 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
               <p>{post.createdAt.toString().substring(0, 10)}</p>
             </div>
           </div>
-          <div className="flex max-w-screen-lg flex-col gap-4">
-            {content.map((text, i) => (
-              <p key={i}>{text}</p>
-            ))}
+          <div className="flex max-w-screen-lg flex-col gap-6">
+            {post.content.map((item, i) => {
+              if (item.type == "text") {
+                return (
+                  <p key={i} className="indent-6">
+                    {item.data}
+                  </p>
+                );
+              } else if (item.type == "image") {
+                const imgUrl = item.data;
+                return (
+                  <div key={i} className="w-full max-w-screen-lg px-6">
+                    <Image
+                      src={imgUrl}
+                      alt=""
+                      priority
+                      layout="responsive"
+                      className="object-cover object-center"
+                      width={900}
+                      height={600}
+                    />
+                  </div>
+                );
+              } else {
+                return <h2 key={i}>{item.data}</h2>;
+              }
+            })}
+            <p className="text-center indent-6">Writing on progress...</p>
           </div>
           <div className="flex w-full max-w-screen-lg flex-col gap-6">
             <h2 className="text-4xl max-md:text-2xl">Related Posts</h2>
@@ -73,7 +107,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                 >
                   <h2 className="text-2xl max-md:text-lg">{e.title}</h2>
                   <p className="overflow-hidden text-ellipsis text-nowrap text-dark/70">
-                    {e.content.toString()}
+                    {e.content.find((e) => e.type == "text")?.data}
                   </p>
                   <p className="font-medium text-dark/70">
                     {e.createdAt.substring(0, 10)}
