@@ -8,7 +8,9 @@ export default function Navbar() {
   const path = usePathname();
   const [open, setOpen] = useState(false);
   return (
-    <nav className="fixed left-1/2 z-50 flex w-full -translate-x-1/2 items-center justify-between border-b border-light/60 bg-accent px-6 py-3 text-lg backdrop-blur-sm transition-all max-lg:h-14 lg:top-10 lg:w-1/2 lg:rounded-full lg:border lg:bg-accent/95">
+    <nav
+      className={`${path.substring(0, 6) == "/blog/" ? "top-0 rounded-none border-b-dark/60 bg-light text-dark lg:w-full lg:border-b" : "bg-accent lg:top-10 lg:w-1/2 lg:rounded-full lg:border lg:bg-accent/95"} fixed left-1/2 z-50 flex w-full -translate-x-1/2 items-center justify-between border-b border-light/60 px-6 py-3 text-lg backdrop-blur-sm transition-all max-lg:h-14`}
+    >
       <Link href={"/"}>
         <h2>jsndwrd</h2>
       </Link>

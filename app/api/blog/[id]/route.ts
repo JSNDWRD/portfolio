@@ -11,5 +11,16 @@ export async function GET(
       id: parseInt(id),
     },
   });
-  return NextResponse.json(blog);
+  const author = await prisma.user.findUnique({
+    where: {
+      id: blog?.authorId,
+    },
+    select: {
+      email: true,
+      name: true,
+      posts: true,
+    },
+  });
+  const blogData = { ...blog, ...author };
+  return NextResponse.json(blogData);
 }
