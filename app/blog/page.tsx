@@ -3,12 +3,17 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import * as motion from "motion/react-client";
 
+interface Content {
+  type: string;
+  data: string;
+}
+
 interface Blog {
   id: number;
   createdAt: string;
   updatedAt: string;
   title: string;
-  content: object[];
+  content: Content[];
 }
 
 export default function Page() {
@@ -87,7 +92,7 @@ export default function Page() {
                   {item.title}
                 </div>
                 <p className="overflow-hidden text-ellipsis text-nowrap text-light/70">
-                  {item.content.toString()}
+                  {item.content.find((e) => e.type == "text")?.data.toString()}
                 </p>
                 <p className="text-light">
                   {item.createdAt.toString().substring(0, 10)}

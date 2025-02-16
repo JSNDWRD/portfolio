@@ -56,6 +56,26 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
     };
     fetchPost();
   }, []);
+
+  const shimmer = (w: number, h: number) => `
+<svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="g">
+      <stop stop-color="#333" offset="20%" />
+      <stop stop-color="#222" offset="50%" />
+      <stop stop-color="#333" offset="70%" />
+    </linearGradient>
+  </defs>
+  <rect width="${w}" height="${h}" fill="#333" />
+  <rect id="r" width="${w}" height="${h}" fill="url(#g)" />
+  <animate xlink:href="#r" attributeName="x" from="-${w}" to="${w}" dur="1s" repeatCount="indefinite"  />
+</svg>`;
+
+  const toBase64 = (str: string) =>
+    typeof window === "undefined"
+      ? Buffer.from(str).toString("base64")
+      : window.btoa(str);
+
   if (!loading) {
     try {
       return (
@@ -72,7 +92,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
               if (item.type == "text") {
                 return (
                   <p key={i} className="indent-6">
-                    {item.data}
+                    {item.data.toString()}
                   </p>
                 );
               } else if (item.type == "image") {
@@ -80,6 +100,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                 return (
                   <div key={i} className="w-full max-w-screen-lg px-6">
                     <Image
+                      placeholder={`data:image/svg+xml;base64,${toBase64(shimmer(900, 600))}`}
                       src={imgUrl}
                       alt=""
                       priority
@@ -90,11 +111,19 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                     />
                   </div>
                 );
-              } else {
+              } else if (item.type == "heading") {
                 return <h2 key={i}>{item.data}</h2>;
+              } else {
+                return (
+                  <p
+                    key={i}
+                    className="text-center font-medium italic text-dark/60"
+                  >
+                    {item.data}
+                  </p>
+                );
               }
             })}
-            <p className="text-center indent-6">Writing on progress...</p>
           </div>
           <div className="flex w-full max-w-screen-lg flex-col gap-6">
             <h2 className="text-4xl max-md:text-2xl">Related Posts</h2>
@@ -107,7 +136,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
                 >
                   <h2 className="text-2xl max-md:text-lg">{e.title}</h2>
                   <p className="overflow-hidden text-ellipsis text-nowrap text-dark/70">
-                    {e.content.find((e) => e.type == "text")?.data}
+                    {e.content.find((e) => e.type == "text")?.data.toString()}
                   </p>
                   <p className="font-medium text-dark/70">
                     {e.createdAt.substring(0, 10)}
